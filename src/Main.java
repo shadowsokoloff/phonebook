@@ -1,11 +1,9 @@
-import com.sun.org.apache.xpath.internal.SourceTree;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+
 
 /**
  * Created by Shadow on 28.01.2017.
@@ -29,14 +27,17 @@ public class Main {
         sidorov.add("+8 800 2000 000 ");
         hashMap.put("Сидоров С.С.", sidorov);
 
-        System.out.println("Введите ФИО пользователя");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String name = reader.readLine();
+
 
 
         while (true) {
+            System.out.println("Введите ФИО пользователя");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            String name = reader.readLine();
 
-            if (!hashMap.containsKey(name)) {
+            if(name.isEmpty()) {
+                System.out.println("Вы не ввели ФИО пользователя");
+            } else if (!hashMap.containsKey(name)) {
                 System.out.println("Такого пользователя нет в БД");
             } else {
                 ArrayList<String> numbers = hashMap.get(name);
